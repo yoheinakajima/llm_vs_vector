@@ -15,3 +15,13 @@ Here's the <a href="http://yoheinaka](https://twitter.com/yoheinakajima/status/1
 
 Example output:
 <img src="https://pbs.twimg.com/media/F21AulEb0AAPC5A?format=jpg&name=4096x4096" alt="Example output">
+
+
+
+## Setup
+`pip install -r requirements.txt`
+`python -m spacy download en_core_web_md`
+`export OPENAI_API_KEY=<your key here>`
+
+## Usage
+`python main.py`
