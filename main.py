@@ -43,8 +43,8 @@ def get_ada_embedding(text):
 
 
 
-positive_sentiment_base = "Joyful Elated Ecstatic Content Jubilant Optimistic Serene Euphoric Radiant Thrilled Positive Bliss Elation Jubilation Serenity Triumph Delight Exuberance Harmony Reverie Zenith"
-negative_sentiment_base = "Despondent Morose Disheartened Forlorn Melancholic Pessimistic Dismayed Frustrated Anguished Apprehensive Negative Despair Gloom Dismay Angst Malaise Turmoil Woe Heartbreak Affliction Abyss"
+positive_sentiment_base = "Positive:  Joyful Elated Ecstatic Content Jubilant Optimistic Serene Euphoric Radiant Thrilled Positive Bliss Elation Jubilation Serenity Triumph Delight Exuberance Harmony Reverie Zenith"
+negative_sentiment_base = "Negative:  Despondent Morose Disheartened Forlorn Melancholic Pessimistic Dismayed Frustrated Anguished Apprehensive Negative Despair Gloom Dismay Angst Malaise Turmoil Woe Heartbreak Affliction Abyss"
 
 
 # Get embeddings for "positive" and "negative" using ADA
