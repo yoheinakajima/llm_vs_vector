@@ -21,9 +21,13 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
 # Load spaCy's English NLP model for embeddings
 nlp = spacy.load("en_core_web_md")
 
+
+positive_sentiment_base = "Positive:  Joyful Elated Ecstatic Content Jubilant Optimistic Serene Euphoric Radiant Thrilled Positive Bliss Elation Jubilation Serenity Triumph Delight Exuberance Harmony Reverie Zenith"
+negative_sentiment_base = "Negative:  Despondent Morose Disheartened Forlorn Melancholic Pessimistic Dismayed Frustrated Anguished Apprehensive Negative Despair Gloom Dismay Angst Malaise Turmoil Woe Heartbreak Affliction Abyss"
+
 # Embed the words "positive" and "negative" using spaCy
-positive_embedding_spacy = nlp("positive statement.").vector
-negative_embedding_spacy = nlp("negative statement.").vector
+positive_embedding_spacy = nlp(positive_sentiment_base).vector
+negative_embedding_spacy = nlp(negative_sentiment_base).vector
 
 # Set up the OpenAI API
 openai.api_key = os.environ["OPENAI_API_KEY"]
@@ -43,8 +47,6 @@ def get_ada_embedding(text):
 
 
 
-positive_sentiment_base = "Positive:  Joyful Elated Ecstatic Content Jubilant Optimistic Serene Euphoric Radiant Thrilled Positive Bliss Elation Jubilation Serenity Triumph Delight Exuberance Harmony Reverie Zenith"
-negative_sentiment_base = "Negative:  Despondent Morose Disheartened Forlorn Melancholic Pessimistic Dismayed Frustrated Anguished Apprehensive Negative Despair Gloom Dismay Angst Malaise Turmoil Woe Heartbreak Affliction Abyss"
 
 
 # Get embeddings for "positive" and "negative" using ADA
@@ -133,10 +135,8 @@ for sentence in sentences:
   start_time = time.time()
   # Classification using spaCy embeddings
   sentence_embedding = nlp(sentence).vector
-  pos_distance_spacy = distance.cosine(sentence_embedding,
-                                       nlp("positive").vector)
-  neg_distance_spacy = distance.cosine(sentence_embedding,
-                                       nlp("negative").vector)
+  pos_distance_spacy = distance.cosine(sentence_embedding, positive_embedding_spacy)
+  neg_distance_spacy = distance.cosine(sentence_embedding, negative_embedding_spacy)
   embedding_duration_spacy = time.time() - start_time
   if pos_distance_spacy < neg_distance_spacy:
     embedding_classification_spacy = "positive"
@@ -146,10 +146,8 @@ for sentence in sentences:
   # Classification using ADA embeddings
   start_time = time.time()
   sentence_embedding_ada = get_ada_embedding(sentence)
-  pos_distance_ada = distance.cosine(sentence_embedding_ada,
-                                     positive_embedding_ada)
-  neg_distance_ada = distance.cosine(sentence_embedding_ada,
-                                     negative_embedding_ada)
+  pos_distance_ada = distance.cosine(sentence_embedding_ada, positive_embedding_ada)
+  neg_distance_ada = distance.cosine(sentence_embedding_ada, negative_embedding_ada)
   embedding_duration_ada = time.time() - start_time
   if pos_distance_ada < neg_distance_ada:
     embedding_classification_ada = "positive"
