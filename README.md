@@ -1,5 +1,5 @@
 # llm_vs_vector
-Testing speed and cost of classification via LLM or via vector embeddings
+Made a little script to speed and cost of classification via LLM or via vector embeddings
 
 Currently tests the classification of 50 sentences into positive or negative using three approaches:
 - ChatCompletion [gpt-3.5-turbo]
