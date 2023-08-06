@@ -1,5 +1,6 @@
 import openai
 import spacy
+import os
 import time
 import requests
 from scipy.spatial import distance
@@ -25,7 +26,7 @@ positive_embedding_spacy = nlp("positive statement.").vector
 negative_embedding_spacy = nlp("negative statement.").vector
 
 # Set up the OpenAI API
-openai.api_key = '<YOUR OPENAI KEY>'  # Replace with your actual API key
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 
 # Function to get embeddings using OpenAI's API
@@ -41,9 +42,14 @@ def get_ada_embedding(text):
   return response.json()["data"][0]["embedding"]
 
 
+
+positive_sentiment_base = "Positive:  Joyful Elated Ecstatic Content Jubilant Optimistic Serene Euphoric Radiant Thrilled Positive Bliss Elation Jubilation Serenity Triumph Delight Exuberance Harmony Reverie Zenith"
+negative_sentiment_base = "Negative:  Despondent Morose Disheartened Forlorn Melancholic Pessimistic Dismayed Frustrated Anguished Apprehensive Negative Despair Gloom Dismay Angst Malaise Turmoil Woe Heartbreak Affliction Abyss"
+
+
 # Get embeddings for "positive" and "negative" using ADA
-positive_embedding_ada = get_ada_embedding("positive")
-negative_embedding_ada = get_ada_embedding("negative")
+positive_embedding_ada = get_ada_embedding(positive_sentiment_base)
+negative_embedding_ada = get_ada_embedding(negative_sentiment_base)
 
 # Example sentences
 sentences = [

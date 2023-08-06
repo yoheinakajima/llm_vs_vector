@@ -1,0 +1,5 @@
+en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.5.0/en_core_web_md-3.5.0-py3-none-any.whl#sha256=b492fd2dfeee931dd60232fd1a122bb5c3542ebcd5d614f11844647050aa539e
+numpy==1.25.2
+openai==0.27.8
+scipy==1.11.1
+spacy==3.5.0
