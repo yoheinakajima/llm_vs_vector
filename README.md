@@ -13,6 +13,8 @@ Stats Tracked:
 
 Here's the <a href="http://yoheinaka](https://twitter.com/yoheinakajima/status/1688032436788322304" target="_blank">Original tweet thread</a> about this.
 
+Update 1: Added multi.py for testing classification into more than two options, using movies and movie genres (only 3.5 and ada)
+
 Example output:
 <img src="https://pbs.twimg.com/media/F21AulEb0AAPC5A?format=jpg&name=4096x4096" alt="Example output">
 
