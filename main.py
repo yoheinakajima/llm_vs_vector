@@ -7,7 +7,7 @@ from scipy.spatial import distance
 import tiktoken
 
 # Cost per token for the respective models (hypothetical costs, check OpenAI's pricing page)
-TOKEN_COST_GPT_3_5 = 0.06
+TOKEN_COST_GPT_3_5 = 0.002
 TOKEN_COST_ADA = 0.0001
 
 
